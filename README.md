@@ -25,18 +25,18 @@ To run this sample you will need:
 
 You will also need to be comfortable with the following tasks:
 
-- Using the [Azure portal](https://manage.windowsazure.com) (or working with your administrator) to do configuration work 
+- Using the [Azure portal](https://portal.azure.com) (or working with your administrator) to do configuration work 
 - Using Git and Github to bring the sample code down to your local machine
 - Using Visual Studio to edit configuration files, build, and run the sample
 
-Every Azure subscription has an associated Azure Active Directory (AAD) tenant.  If you don't already have an Azure subscription, you can get a free subscription by signing up at [http://wwww.windowsazure.com](http://www.windowsazure.com).  
+Every Azure subscription has an associated Azure Active Directory (AAD) tenant.  If you don't already have an Azure subscription, you can get a free subscription by signing up at [http://wwww.windowsazure.com](http://www.azure.com).  
 
 ### Step 1: Configure a Native Client application in your AAD tenant
 Before you can run the sample application, you will need to allow it to access your AAD tenant for authentication and authorization to access the Billing APIs.  If you already have a Native Client Application configured that you would like to use (and it is configured according to the steps below), you can jump to Step 2.
 
 To configure a new AAD application:
 
-1. Sign in to the [Azure portal](http://manage.windowsazure.com), using credentials that have been granted service administrator/co-administrator access on the subscription which is trusting your AAD tenant, and granted Global Administrator access in the AAD tenant. See [Manage Accounts, Subscriptions, and Administrative Roles](https://msdn.microsoft.com/library/azure/hh531793.aspx) for details on managing the service administrator and co-administrators.
+1. Sign in to the [Azure portal](https://portal.azure.com), using credentials that have been granted service administrator/co-administrator access on the subscription which is trusting your AAD tenant, and granted Global Administrator access in the AAD tenant. See [Role Based Access Control](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal) for details on managing the service administrator and co-administrators.
 2. Select the AAD tenant you wish to use, and go to the "Applications" page.
 3. From there, you can use the "Add" feature to "Add a new application my organization is developing".
 4. Provide a name (ie: ConsoleApp-Billing-RateCard or similar) for the new application.
@@ -44,7 +44,7 @@ To configure a new AAD application:
 6. After you've added the new application, select it again within the list of applications and click "Configure" so you can make sure the sample app will have permissions to access the Windows Azure Service Management APIs, which is the permission used to secure the Billing APIs.  
 7. Scroll down to the to the "Permissions to other applications" section of your newly created application's configuration page.  Then click the "Add Application" button, select the "Windows Azure Service Management" row, and click the check mark to save.  After saving, hover the "Delegated Permissions" area on the right side of the "Windows Azure Service Management" row, click the "Delegated Permissions" drop down list, select the "Access Azure Service Management (preview)" option, and click "Save" again.
 
-    **NOTE**: the "Windows Azure Active Directory" permission "Enable sign-on and read users' profiles" is enabled by default.  It allows users to sign in to the application with their organizational accounts, enabling the application to read the profiles of signed-in users, such as their email address and contact information.  This is a delegation permission, and gives the user the ability to consent before proceeding.  Please refer to [Adding, Updating, and Removing an Application](https://msdn.microsoft.com/library/azure/dn132599.aspx) for more depth on configuring an Azure AD tenant to enable an application to access your tenant.
+    **NOTE**: the "Windows Azure Active Directory" permission "Enable sign-on and read users' profiles" is enabled by default.  It allows users to sign in to the application with their organizational accounts, enabling the application to read the profiles of signed-in users, such as their email address and contact information.  This is a delegation permission, and gives the user the ability to consent before proceeding.  Please refer to [Integrate Apps with Azure](https://docs.microsoft.com/azure/active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad) for more depth on configuring an Azure AD tenant to enable an application to access your tenant.
   
 8. While you are on this page, also note/copy the "Client ID" GUID and "Redirect URI", as you will use these in Step #3 below.  You will also need your Azure Subscription ID and AAD tenant domain name, both of which you can copy from the "Settings" page in the management portal.
 
@@ -82,7 +82,7 @@ Make sure the value you enter for SubscriptionID is both a valid subscription an
 
 You should see the GUID for the subscription under the "Subscription ID" column, and the DNS name for your Azure AD tenant under the "Directory" column (shown in a `Friendly-Name (DNS-Name)` format).
 
-For more details on the trust relationship between the Azure subscription and Azure AD, please see [How Azure subscriptions are associated with Azure AD](https://msdn.microsoft.com/library/azure/dn629581.aspx). 
+For more details on the trust relationship between the Azure subscription and Azure AD, please see [How Azure subscriptions are associated with Azure AD](https://docs.microsoft.com/azure/active-directory/fundamentals/active-directory-how-subscriptions-associated-directory). 
 
 **403 Forbidden** HTTP error  
 The Azure Billing REST APIs are implemented as a Resource Provider as part of the Azure Resource Manager, and therefore share its dependencies.  Access control for Azure Resource Manager uses the built-in "Owner", "Contributor", and "Reader" roles, via the Role Based Access Control (RBAC) feature in the [Azure Portal](https://portal.azure.com/) to secure resources. For details on configuring, see [Role-based access control in the Microsoft Azure portal](https://azure.microsoft.com/documentation/articles/role-based-access-control-configure/). 
@@ -111,4 +111,4 @@ If you would like to become an active contributor to this project please follow 
 If you encounter any bugs with the library please file an issue in the [Issues](https://github.com/Azure-Samples/billing-dotnet-ratecard-api/issues) section of the repository.
 
 ## Learn More
-* [Azure Billing REST API Reference ](https://msdn.microsoft.com/library/azure/1ea5b323-54bb-423d-916f-190de96c6a3c)
+* [Azure Billing API Overview](https://docs.microsoft.com/en-us/azure/billing/billing-usage-rate-card-overview)
